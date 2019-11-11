@@ -14,11 +14,22 @@ class Main extends Component {
             showCamera: false
         }
     }
-    clickEnd = () => () => {
+    clickGet = () => () => {
         axios.get('/api/first/')
             .then( res => {
             console.log(res);
         }).catch( error =>{
+            console.log(error);
+        })
+    }
+    clickPost = () => () => {
+        axios.post('/api/signup/',{
+            username : 124,
+            password : 124
+        })
+            .then( res => {
+                console.log(res);
+            }).catch( error =>{
             console.log(error);
         })
     }
@@ -54,7 +65,10 @@ class Main extends Component {
                     </div>
                 </div>
                 <div className='d-flex d-ho-center'>
-                    <button id='fever-mode-click-end' onClick={this.clickEnd()} className='button-orange-s mt-5'>End Fever</button>
+                    <button id='fever-mode-click-end' onClick={this.clickGet()} className='button-orange-s mt-5'>GET</button>
+                </div>
+                <div className='d-flex d-ho-center'>
+                    <button id='fever-mode-click-end' onClick={this.clickPost()} className='button-orange-s mt-5'>POST</button>
                 </div>
                 <div className='mt-5'>Let yourself focus.</div>
                 <div className='mt-5'>Take record of your concentrated Time</div>
