@@ -4,7 +4,24 @@ import caro1 from '../assets/img/caro1.png'
 import caro2 from '../assets/img/caro2.png'
 import caro3 from '../assets/img/caro3.png'
 import {Carousel} from 'react-bootstrap'
+import axios from 'axios'
+
 class Main extends Component {
+    constructor(props){
+        super(props);
+        this.state = {
+            hid:0,
+            showCamera: false
+        }
+    }
+    clickEnd = () => () => {
+        axios.get('/api/first/')
+            .then( res => {
+            console.log(res);
+        }).catch( error =>{
+            console.log(error);
+        })
+    }
     render() {
         return (
             <div className='f-xlarge t-center'>
@@ -35,6 +52,9 @@ class Main extends Component {
                             </Carousel.Item>
                         </Carousel>
                     </div>
+                </div>
+                <div className='d-flex d-ho-center'>
+                    <button id='fever-mode-click-end' onClick={this.clickEnd()} className='button-orange-s mt-5'>End Fever</button>
                 </div>
                 <div className='mt-5'>Let yourself focus.</div>
                 <div className='mt-5'>Take record of your concentrated Time</div>

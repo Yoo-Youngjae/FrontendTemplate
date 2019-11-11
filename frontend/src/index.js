@@ -4,6 +4,10 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import axios from 'axios'
+
+axios.defaults.xsrfCookieName = "csrftoken"; //get 빼고 delete 등 db 수정하는 것들 막음
+axios.defaults.xsrfHeaderName = "X-CSRFTOKEN";
 
 ReactDOM.render(<App />, document.getElementById('root'));
 
